@@ -1,10 +1,12 @@
 #include "interface.h"
 #include <stdio.h>
+#include <stdint.h>
 #include <string.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/ioctl.h>
 #include <net/if.h>
+#include <sys/socket.h>
 #include <linux/can.h>
 #include <linux/can/raw.h>
 
@@ -14,7 +16,7 @@ int can_init(const char *interface) {
     struct sockaddr_can addr;
 
     // Create socket
-    if ((sockfd = socket(PF_CAN, SOCK_RAW, CAN_RAW)) < 0) {
+    if ((sockfd = socket(AF_CAN, SOCK_RAW, CAN_RAW)) < 0) {
         perror("Socket");
         return -1;
     }

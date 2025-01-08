@@ -17,7 +17,7 @@ int main(int argc, char **argv) {
     }
 
     // Initialize CAN interface
-    int can_sock = can_init(CAN_INTERFACE);
+    int can_sock = can_init(INTERFACE);
     if (can_sock < 0) {
         fprintf(stderr, "Failed to initialize CAN interface.\n");
         return -1;
